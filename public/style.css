@@ -1,0 +1,259 @@
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+  margin: 0;
+  background-color: #7799bb;
+  overflow-y: scroll;
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-title {
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 30px;
+  font-weight: 100;
+  background-color: gray;
+  color: #fff;
+}
+
+.navbar {
+  background-color: #00008b;
+  font-size: 18px;
+  width: 180px;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 80px;
+  
+}
+
+.navlist {
+  margin: 0px 0px 0px 5px;
+  padding: 0px 0 0px 0;
+}
+
+.navitem {
+  display: inline-block;
+  padding: 10px 0 10px 0;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: white;
+  width: 160px;
+  
+}
+
+.img-container {
+	padding: 10px;
+	margin: 10px;
+	position: fixed;
+	width: 100%;
+	left: 200px;
+	z-index: -1;
+	background-color: white;
+	border-radius: 25px;
+}
+
+.container {
+	padding: 10px;
+	margin: 10px;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 200px;
+	z-index: -1;
+	background-color: white;
+	border-radius: 25px;
+}
+
+.add-container {
+	padding: 50px;
+}
+
+.title {
+	color: black;
+	padding: 20px;
+}
+
+.ingr {
+
+}
+
+.input {
+	margin-bottom: 20px;
+}
+
+#instruction {
+	height: 200px;
+	width: 500px;
+}
+
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: float;
+}
+
+.btn:hover {background: #eee;}
+
+
+.cake-photo-img {
+padding: 20px;
+}
+
+.burger-photo-img {
+padding: 20px;
+}
+
+.potato-photo-img {
+	padding: 20px;
+}
+
+.food-image {
+	border-style: solid;
+	border: 10px;
+	padding: 20px;
+}
+
+a {
+  color: white;
+}
+
+a:hover,
+a:focus {
+  color: #319df6;
+}
+
+a:focus {
+  outline: none;
+}
+
+.navlink a {
+  padding: 8px 10px;
+  display: inline-block;
+}
+
+.img-container {
+	width: 100%;
+	height: 100%;
+	background-size: 100%;
+
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-dialog {
+  width: auto;
+  max-width: 600px;
+  min-width: 350px;
+  min-height: 300px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.modal-header {
+  position: relative;
+  padding: 10px 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.modal-close-button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 24px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.twit-input-element {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.twit-input-element label {
+  font-weight: 600;
+  flex: 1 75px;
+  margin-right: 10px;
+}
+
+.twit-input-element input,
+.twit-input-element textarea {
+  flex: 6 200px;
+  padding: 8px;
+  font-size: 20px;
+  border: 1px solid #aaa;
+}
+
+.twit-input-element textarea {
+  min-height: 64px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 10px 20px 10px;
+}
+
+.modal-footer button {
+  font-size: 20px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.modal-footer .modal-cancel-button:hover {
+  background-color: #eee;
+}
+
+.modal-footer .modal-accept-button {
+  background-color: #319df6;
+  color: #fff;
+}
+
+.modal-footer .modal-accept-button:hover {
+  background-color: #087dde;
+}
+
+.error-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.error-container h2 {
+  margin: 10px 0;
+  font-size: 96px;
+  font-weight: 100;
+}
+
+.error-container h3 {
+  margin: 10px 0;
+  font-size: 36px;
+  font-weight: 400;
+}
