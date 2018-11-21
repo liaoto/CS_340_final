@@ -1,0 +1,331 @@
+<html>
+	<head>
+		<title>Image Uploader</title>
+		
+		<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type='text/javascript'>
+			
+			
+			var fileList = [];
+			var countNumFiles = 0;
+			$(document).ready(function(){
+				
+				//alert("document loaded");
+				
+			});
+			
+			window.onload = function(){
+			
+				var fileInput = document.getElementById("form-input-img");
+				setImagesIntoList(fileInput);
+				
+			}
+			
+			function setImagesIntoList(fileInput){
+				
+				fileInput.addEventListener("change", function (e){
+				//fileList = []; Reset 	
+					for(var i = 0; i < fileInput.files.length; i++){
+						
+						fileList.push(fileInput.files[countNumFiles]);
+						console.log("File index # " + countNumFiles);
+						console.log(fileInput.files[countNumFiles]);
+						
+						appendImageDataToPage(fileInput.files[countNumFiles], countNumFiles);
+						countNumFiles++;
+						
+					}
+					
+					console.log("\nTOTAL FILES in new array: " + fileList.length);
+					
+					
+				});
+				
+			}
+			
+			//Read file source for display purposes
+			function displayImgPreview(fileSource, imgWrapper){
+				
+				var reader = new FileReader();
+				reader.addEventListener("load", function(){
+					
+					imgWrapper.src = reader.result;
+					
+				}, false);
+					
+				if(fileSource){
+					
+					reader.readAsDataURL(fileSource);
+					
+				
+				}
+				
+			}
+			
+			function appendImageDataToPage(arr, indexPos){
+				var outerDiv = document.getElementById("content");
+				var innerDiv = document.createElement("div");
+				var innerDivImgContainer = document.createElement("img");
+				var innerDivLabel = document.createElement("label");
+				var innerDivButton = document.createElement("button");
+				
+				innerDivButton.id = indexPos;
+				innerDiv.id = indexPos;
+				innerDivImgContainer.id = indexPos;
+				innerDivButton.innerHTML = "remove";
+				innerDivLabel.innerHTML = arr.name;
+				innerDiv.className = "filePreviewContainer";
+				innerDivImgContainer.src = "load.gif";
+				
+				innerDivButton.addEventListener("click", function(){
+					var conf = confirm("Remove " + indexPos);
+					if(conf == true){
+						//removeImageFromFileList(arr, indexPos);
+						removeImageFromArrayList(fileList, indexPos);
+						if(innerDiv.id == indexPos){
+							innerDiv.parentNode.removeChild(innerDiv);
+						}
+						
+					}
+					
+				});
+				
+				
+				innerDiv.appendChild(innerDivImgContainer);
+				innerDiv.appendChild(innerDivLabel);
+				innerDiv.appendChild(innerDivButton);
+				outerDiv.appendChild(innerDiv);
+				
+				displayImgPreview(arr, innerDivImgContainer);
+				
+				
+			}
+			
+			
+			function removeImageFromArrayList(array, indexPos){
+				
+				console.log("Array size BEFORE splice: " + array.length);
+				array.splice(indexPos, 1);
+				console.log("Array size AFTER splice: " + array.length);
+				console.log(array[0]);
+				
+			
+			}
+			
+			function uploadImages(){
+				if(fileList.length > 0){
+					
+					var formData = new FormData();
+					var request = new XMLHttpRequest();
+					for(var i = 0; i < fileList.length; i++){
+					formData.append('file', fileList[0] );
+					
+					}
+					
+					
+					request.open('POST', 'test.php');
+					request.send(formData);
+					
+					
+					console.log("Commencing the uploading process!");
+					console.log(fileList.length);
+					/*
+					$.ajax({
+						
+						type: "POST",
+						url: "test.php",
+						data: {formData:formData},
+						contentType: false,
+						processData: false,
+						success: function(data){
+							console.log(data);
+						},
+						error: function(data){
+							alert("NO BUENO");
+						}
+						
+					
+					});
+					*/
+					
+					
+					
+					
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		</script>
+		
+		<style>
+			body{
+				margin:0;
+				padding:0;
+				background-color:white;
+				font-family: 'Questrial', sans-serif;
+			}
+			
+			#wrapper{
+				width:1024px;
+				height:768px;
+				background-color:white;
+				margin-left:auto;
+				margin-right:auto;
+				position:relative;
+			}
+			
+			#header{
+				width:inherit;
+				height:75px;
+				display:block;
+				line-height:75px;
+				//text-align:center;
+				background-color:white;
+			}
+			
+			#header h1{
+				font-size:36px;
+				font-weight:100;
+				margin-left:5px;
+				padding:0;
+				color:black;
+			}
+			
+			#content{
+				width:inherit;
+				height:615px;
+				display:block;
+				background-color:gray;
+				overflow:auto;
+				background-color:white;
+				border:2px solid #262228;
+				border-radius:5px;
+			}
+			
+			.filePreviewContainer{
+				width:997px;
+				height:130px;
+				background-color:#f4f4f4;
+				margin-top:2px;
+				display:block;
+				padding-left:5px;
+				padding-right:5px;
+				padding-top:10px;
+				padding-bottom:10px;
+				border-radius:10px;
+			}
+			
+			.filePreviewContainer img{
+				width:130px;
+				height:130px;
+				display:inline-block;
+				border-radius:3px;
+				float:left;
+				margin-right:5px;
+			}
+			
+			.filePreviewContainer button{
+				width:100px;
+				height:30px;
+				background-color:#262228;
+				color:white;
+				border:none;
+				margin-bottom:5px;
+				font-family: 'Questrial', sans-serif;
+				border-radius:3px;
+				margin:5px;
+				display:inline-block;
+				vertical-align:top;
+			}
+			
+			.filePreviewContainer label{
+				padding:0;
+				margin:0;
+				font-size:18px;
+				font-weight:500;
+				margin-left:20px;
+				vertical-align:top;
+			}
+			
+			#footer{
+				position:absolute;
+				bottom:0;
+				width:1014px;
+				height:65px;   /* Height of the footer */
+				background:white;
+				padding:5px;
+			}
+			
+			#footer label[for=form-input-img], button[id=upload-button]{
+				font-family: 'Questrial', sans-serif;
+				min-width:150px;
+				margin-top:5px;
+				text-align:center;
+				background-color:#262228;
+				color:white;
+				height:50px;
+				display:inline-block;
+				line-height:50px;
+				border:none;
+			}
+			
+			#footer input[type="file"]{ 
+				z-index: -1;
+				position: absolute;
+				opacity: 0;
+				
+			}
+			
+			
+			
+		</style>
+		
+	</head>
+	
+	<body>
+	
+		<div id="wrapper">
+			<div id="header">
+				<h1>Image Uploader</h1>
+			</div>
+			
+			<div id="content">
+				
+			</div>
+			
+			<div id="footer">
+				<form action="" method="" enctype="multipart/form-data">
+					<input type="file" id="form-input-img" name="file" accept= "image/*" multiple/>
+					<label for="form-input-img">Select Images</label>
+					
+				</form>
+				<button id = "upload-button" onclick="uploadImages()">Upload</button>
+			</div>
+		</div>
+		
+	</body>
+	
