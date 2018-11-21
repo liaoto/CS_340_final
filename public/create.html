@@ -314,9 +314,6 @@
 				width:1366px;
 				min-height:768px;
 				height:auto;
-				margin-left:auto;
-				margin-right:auto;
-				//border:1px solid black;
 				font-family: 'Questrial', sans-serif;
 				color:#464646;
 				padding-top:10px;
@@ -382,9 +379,9 @@
 
       <nav class="navbar">
         <ul class="navlist">
-          <li class="navitem navlink active"><a href="homepage.html">Home</a></li>
+          <li class="navitem navlink active"><a href="index.html">Home</a></li>
           <li class="navitem navlink"><a href="recipe.html">Recipe</a></li>
-          <li class="navitem navlink"><a href="Add_recipe.html">Add a Recipe</a></li>
+          <li class="navitem navlink"><a href="create.html">Add a Recipe</a></li>
 		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
 		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete a Recipe</a></li>
 		  <li class="navitem navlink"><a href="About.html">About</a></li>
@@ -392,13 +389,15 @@
       </nav>	   
 	
 	
-	<div id="container">
+	<div id="container" class="container">
 	
+	<h1 class="title"> Create a Recipe</h1>
+		
 		<div class = "add-container">
 		
 		<form name="recipe-upload-form" method="post" action="php/recipe_upload_validator.php" onsubmit= "return validateForm()">
 		
-			<label>Recipe Name</label>
+			<label>Recipe Name*</label>
 			<input type="text" name="recipe-name" id="recipe-upload"></br>
 			
 			<label> Description </label>
@@ -416,17 +415,17 @@
 			<label>Delete Code</label>
 			<input type="password" id="recipe-upload" name="delete-code"></br>
 			
-			<label>Prep Time(minutes)</label>
+			<label>Prep Time(minutes)*</label>
 			<input type="number" min="0" id="recipe-upload" name="prep-time"></br>
 			
-			<label>Cook Time(minutes)</label>
+			<label>Cook Time(minutes)*</label>
 			<input type="number" min="0" id="recipe-upload" name="cook-time"></br>
 			
-			<label> Directions </label>
+			<label> Directions* </label>
 			<textarea name = "cooking-directions"></textarea>
 			</br>
 			</br>
-			<label>Ingredients (qty/units/name)</label>
+			<label>Ingredients* (qty/units/name)</label>
 			
 			
 			<div id = "ingredients-list"></div></br>
@@ -436,7 +435,7 @@
 			<input type="submit" value="submit" name="submit" style="margin-top:50px;">
 			
 		</form>
-			<button id="upload-button" name ="upload-button" onclick="test()">???TEST</button>
+		<!--	<button id="upload-button" name ="upload-button" onclick="test()">???TEST</button> -->
 	</div>
 	</div>
 </html>
