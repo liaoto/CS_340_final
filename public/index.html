@@ -3,15 +3,12 @@
 	
 		<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
 		
+        <link rel="stylesheet" href="./style.css" media="screen">
+		
 		<style>
-			body{
-				//background-color:#F0F0F0;
-				background-color:white;
-				font-size:12px;
-				margin:0;
 			
-			}
 			
+			<!--
 			#container{
 				width:1366px;
 				
@@ -23,7 +20,7 @@
 				
 				
 			
-			}
+			} 
 			
 			#header{
 				width:inherit;
@@ -41,6 +38,7 @@
 				font-weight:100;
 				font-size:24px;
 			}
+			
 			
 			#nav{
 				width:inherit;
@@ -69,41 +67,28 @@
 				
 			}
 			
+			-->
+			
 			#left-side{
-				width:966px;
+				width:800px;
 				margin-right:0px;
-				min-height:900px;
-				height:auto;
 				background-color:white;
-				float:left;
+				float: left;
+				padding: 20px 5px 0px 0px;
 			}
+			
 			
 			#right-side{
-				width:390px;
-				min-height:758px;
-				height:auto;
-				float:right;
+				display: inline-block;
+				width:430px;
 				background-color:white;
 				font-family: 'Questrial', sans-serif;
-				padding:5px;
 				font-size:16px;
+				padding: 20px 0px 0px 0px;
 				
-				
 			}
-			
-			#right-side span{
-				font-size:14px;
-				display:block;
-				margin-bottom:10px;
-				margin-top:10px;
-				font-weight:bold;
-			}
-			
-			#right-side label{
-				font-size:16px;
-				margin-left:10px;
-			}
-			
+		 
+	
 			input[name=search-recipes]{
 				border:1px solid #0FA4FF;
 				border-radius:3px;
@@ -184,7 +169,23 @@
 		
 	</head>
 	
-	<div id="container">
+	<a href="#"><h1 class="site-title"> The Recipe Database</h1></a>
+	 
+	<nav class="navbar">
+        <ul class="navlist">
+          <li class="navitem navlink active"><a href="index.html">Home</a></li>
+          <li class="navitem navlink"><a href="recipe.html">Recipe</a></li>
+          <li class="navitem navlink"><a href="create.html">Add a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete a Recipe</a></li>
+		  <li class="navitem navlink"><a href="About.html">About</a></li>
+        </ul>
+    </nav>	
+	
+	<div id="container" class="container">
+		
+		
+		<!-- 
 		
 		<div id="header">
 		
@@ -203,6 +204,8 @@
 			<a href="admin/index.php">Admin</a>
 			
 		</div>
+		
+		-->
 		
 		<div id="left-side">
 			
@@ -261,8 +264,10 @@
 		
 		</div>
 		
-		<div id="right-side">
 		
+		
+		<div id="right-side">
+		 
 			<span>Search Recipe Library</span>
 			
 			<form>
