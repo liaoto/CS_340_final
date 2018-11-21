@@ -1,0 +1,212 @@
+<html>
+	<head>
+		<title>Image Uploader</title>
+		
+		<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type='text/javascript'>
+		
+		window.onload = function(){
+			
+			console.log("Document Loaded.");
+				
+		}
+		
+		
+		//Gets files from user input and makes a function call to uploadFiles()
+		//This function is called from the select images button
+		function loadFiles(){
+			console.log("Name\t\tType\t\tSize");
+			//Grab contents from user input
+			var rawFileInput = document.getElementById("form-input").files;
+			
+			//Loop over files
+			for(var i = 0; i < rawFileInput.length; i++){
+				displayFilesToScreen(rawFileInput[i]);
+				//Rather than passing a list/array of data, pass one obj at a time
+				uploadFiles(rawFileInput[i]);
+				console.log(rawFileInput[i].name + "\t\t" + rawFileInput[i].type + "\t\t" + rawFileInput[i].size );
+			
+			}
+			
+		}
+		
+		//Creates the ajax call to send off the form data to PHP
+		function uploadFiles(fileObj){
+			
+			var formData = new FormData();
+			var xml = new XMLHttpRequest();
+			
+			formData.append("pending_files", fileObj);
+			xml.open("POST", "test.php");
+			
+			xml.onreadystatechange = function(){
+			
+				if(xml.readyState == 4 && xml.status == 200){
+				
+					//console.log(xml.responseText);
+				
+				}
+			
+			};
+			
+			xml.send(formData);
+		
+		}
+		
+		function displayFilesToScreen(imgSrc){
+			
+			var outerDiv = document.getElementById("content");
+			
+			var innerDiv = document.createElement("div");
+			innerDiv.className = "img-preview";
+			
+			var img = document.createElement("img");
+			img.width = "130";
+			img.height = "130";
+			
+			img.src = "load.gif";
+			
+			innerDiv.appendChild(img);
+			outerDiv.appendChild(innerDiv);
+			
+			var reader = new FileReader();
+			
+			reader.addEventListener("load", function(){
+				
+				img.src = reader.result;
+				
+			
+			}, false);
+			
+			if(imgSrc){
+			
+				reader.readAsDataURL(imgSrc);
+			
+			}
+			
+			
+		
+		}
+		
+		
+		
+		
+			
+		</script>
+		
+		<style>
+			body{
+				margin:0;
+				padding:0;
+				background-color:white;
+				font-family: 'Questrial', sans-serif;
+			}
+			
+			#wrapper{
+				width:1024px;
+				height:768px;
+				background-color:white;
+				margin-left:auto;
+				margin-right:auto;
+				position:relative;
+			}
+			
+			#header{
+				width:inherit;
+				height:75px;
+				display:block;
+				line-height:75px;
+				//text-align:center;
+				background-color:white;
+			}
+			
+			#header h1{
+				font-size:36px;
+				font-weight:100;
+				margin-left:5px;
+				padding:0;
+				color:black;
+			}
+			
+			#content{
+				width:inherit;
+				height:615px;
+				display:block;
+				background-color:gray;
+				overflow:auto;
+				background-color:white;
+				border:2px solid #262228;
+				border-radius:5px;
+			}
+			
+			.img-preview{
+				width:130px;
+				height:130px;
+				margin:5px;
+				border:1px solid black;
+				display:inline-block;
+			}
+			
+			
+			
+			
+			
+			#footer{
+				position:absolute;
+				bottom:0;
+				width:1014px;
+				height:65px;   /* Height of the footer */
+				background:white;
+				padding:5px;
+			}
+			
+			#footer label[for=form-input], button[id=upload-button]{
+				font-family: 'Questrial', sans-serif;
+				min-width:150px;
+				margin-top:5px;
+				text-align:center;
+				background-color:#262228;
+				color:white;
+				height:50px;
+				display:inline-block;
+				line-height:50px;
+				border:none;
+			}
+			
+			#footer input[type="file"]{ 
+				z-index: -1;
+				position: absolute;
+				opacity: 0;
+				
+			}
+			
+			
+			
+		</style>
+		
+	</head>
+	
+	<body>
+	
+		<div id="wrapper">
+			<div id="header">
+				<h1>Image Uploader</h1>
+			</div>
+			
+			<div id="content">
+				
+			</div>
+			
+			<div id="footer">
+				<form action="" method="" enctype="multipart/form-data">
+					<input type="file" id="form-input" name="file" accept= "image/*" onchange="loadFiles()" multiple/>
+					<label for="form-input">Select Images</label>
+					
+				</form>
+				<!--<button id = "upload-button" onclick="">Upload</button>-->
+			</div>
+		</div>
+		
+	</body>
+	

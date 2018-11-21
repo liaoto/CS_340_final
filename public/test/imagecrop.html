@@ -1,0 +1,160 @@
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+		<script type='text/javascript'>
+			
+			window.onload = function(){
+			
+				var canvas = document.getElementById("canvas");
+				var ctx = canvas.getContext('2d');
+				canvas.addEventListener("mousemove", displayCoordinates);
+				
+				
+			
+				
+				drawRect(ctx, canvas.width, canvas.height);
+			
+			}
+			
+			
+			
+			
+			//Display coordinates of mouse within the canvas area
+			function displayCoordinates(event){
+				
+				var x = event.clientX;
+				var y = event.clientY;
+				var coor = "Coordinates: (X:" + x + ",Y" + y + ")";
+				document.getElementById("demo").innerHTML = coor;
+				
+			}
+			
+			
+			//These could be a simple call rather than functions
+			//Get the width of the canvas
+			function getCanvasWidth(theCanvas){
+			
+				var width = theCanvas.width;
+			
+				return width;
+
+			}
+			//Get height of canvas
+			function getCanvasHeight(theCanvas){
+				
+				height = theCanvas.height;
+				
+				return height;
+			}
+			
+			function drawRect(context, myWidth, myHeight){
+				
+				
+				context.lineWidth = 5;
+				context.rect(200,200,Math.ceil(myWidth/2),Math.ceil(myHeight/2));
+				
+				context.strokeStyle = "#1C86EE";
+				context.stroke();
+				
+				context.beginPath();
+				context.strokeStyle = "#1C86EE";
+				context.moveTo(10, 100);
+				context.lineTo(200, 150);
+				context.stroke();
+				
+			}
+			
+			
+			
+			
+			
+			
+		
+		</script>
+		
+		
+		<style>
+		body{
+			margin:0;
+			padding:0;
+			font-family: 'Questrial', sans-serif;
+		}
+		
+		#canvas{
+			width:1024px;
+			height:768px;
+			border:1px solid black;
+			background-color:white;
+			
+		}
+		
+		#image-upload-container{
+			width:1004px;
+			height:auto;
+			border:1px solid black;
+			padding:10px;
+		}
+		
+		.image-uploader{
+			width: 0.1px;
+			height 0.1px;
+			opacity:0;
+			overflow:hidden;
+			position:absolute;
+			z-index:-1;
+		}
+		
+		.image-uploader + label{
+			font-size: 1.0em;
+			font-weight: 100;
+			color: white;
+			background-color: #1dcaff ;
+			color:white;
+			border-radius:1px;
+			display: inline-block;
+			padding:5px;
+		
+		}
+		
+		.image-uploader :focus + label,
+		.image-uploader  + label:hover{
+			
+			background-color: #0084b4;
+		
+		}
+		
+		.image-uploader + label {
+			
+			cursor: pointer; /* "hand" cursor */
+		
+		}
+		
+		#container{
+			width:1024px;
+			min-height:500px;
+			border:1px solid black;
+		}
+		
+		</style>
+	</head>
+	
+	<body>
+		<canvas id="canvas"  width="1024" height="768"></canvas>
+		<p id="demo"></p>
+		
+		<div id = "image-upload-container">
+			
+			<input type="file" name="img" id="img" class="image-uploader" data-multiple-caption="{count} files selected" multiple /  />
+			<label for="img">Select Images</label>
+		
+			
+		</div>
+		
+		<div id="container">
+		</div>
+		
+		
+		
+		
+	</body>
+</html>
