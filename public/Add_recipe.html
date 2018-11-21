@@ -41,18 +41,22 @@
 	
 	
        <form> Recipe_name*<br> <input type="text" name="Recipe Name" class="input" <br> </form>
+	   <form> Delete_code*<br> <input type="password" name="Delete_code" class="input" <br> </form>
 	   
 	   <form class ="input">
 	   <h4> Tags:</h4>
-	   <input type="radio" name="breakfast" /> : Breakfast<br />
-	   <input type="radio" name="breakfast" /> : Lunch<br />
-	   <input type="radio" name="breakfast" /> : Dinner<br />
+	   <input type="radio" name="tag" /> : Breakfast<br />
+	   <input type="radio" name="tag" /> : Lunch<br />
+	   <input type="radio" name="tag" /> : Dinner<br />
 	   </form> 
 	   
-	   <form> Prep_time (Minutes)*<br> <input type="text" name="Prep Time" class="input" <br> </form>
-	   <form> Cook_time (Minutes)*<br> <input type="text" name="Cook Time" class="input" <br> </form>
+	   <form> Prep_time (Minutes)*<br> <input type="number" min="0" name="Prep Time" class="input" <br> </form>
+	   <form> Cook_time (Minutes)*<br> <input type="number" min="0" name="Cook Time" class="input" <br> </form>
 	   
-	   <form> Instructions<br> <input type="text" name="Instruction" class="input" id="instruction" <br> </form>
+	   <form> 
+	   <h4>Instructions:</h4>
+	   <textarea rows="4" cols="50" class="input" id="instruction"></textarea> 
+	   </form>
 		
 	   <form>Ingredient*<br> <input type="text" name="Ingr Name" class="ingr" class="input" <br></form>
 	   <form>Quantity*<br> <input type="text" name="Ingr Name" class ="ingr" class="input" <br></form>
