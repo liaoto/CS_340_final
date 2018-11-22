@@ -1,0 +1,412 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script>
+			window.onload = function(){
+				
+				console.log("Doc Martin Loaded...");
+				
+			}
+			
+			//Make setter/getter for this global plz
+			var ingredientCounter = 0;
+			
+			function main(){
+				
+				var recipeName = document.getElementById("recipe-name").value;
+				var timeOfDayToEat = document.getElementsByName("recipe-time-of-day[]");
+				var prepTime = document.getElementById("recipe-prep-time").value;
+				var cookTime = document.getElementById("recipe-cook-time").value;
+				var directions = document.getElementById("recipe-directions").value;
+				
+				
+				
+				if( isNameSet(recipeName) && 
+					isTimeToEatSet(timeOfDayToEat) && 
+					isPrepTimeSet(prepTime) && 
+					isCookTimeSet(cookTime) && 
+					areDirectionsSet(directions) && 
+					areIngredientsSet(ingredientCounter) 
+				
+				){
+					alert("DO THE UPLOAD");
+					submitFormData();
+					//call the ajax function here!
+				}
+				else{
+					alert("PROBLEMS WITH THE FORM");
+				}
+				
+				
+				
+				
+				
+			}
+			
+			//Validate recipe Name
+			function isNameSet(name){
+			
+				//Only accepts letters and numbers
+				var regex = /([A-Za-z0-9\-\_]+)/;
+				
+				//Length constraints
+				if(name == "" || name.length <= 3){
+				
+					console.log("Name is too short");
+					return false;
+					
+				}
+				
+				//Check for invalid characters
+				else if(!name.match(regex)){
+					
+					console.log("Only letters and numbers are accepted");
+					return false;
+				}
+				
+				else{
+				
+					console.log("Name looks good!");
+					return true;
+				
+				}
+				
+			}
+			
+			//
+			function isTimeToEatSet(mealTimes){
+			
+				var mealCounter = 0;
+				
+				for(var i = 0; i < mealTimes.length; i++){
+					
+					if(mealTimes[i].checked){
+						//console.log(mealTimes[i].value);
+						mealCounter++;
+					}
+				
+				}
+				
+				if(mealCounter == 0){
+					console.log("At least one meal time is required");
+					return false;
+				}
+				
+				else{
+					console.log("At least one meal time has been selected.  Huzzah!");
+					return true;
+				}
+				
+			}
+			
+			function isPrepTimeSet(time){
+				
+				if(time == ""){
+				
+					console.log("Prep time cannot be empty");
+					return false;
+				
+				}
+				else if(isNaN(time)){
+					
+					console.log("This isn't a number");
+					return false;
+				
+				}
+				else{
+					
+					console.log("Prep time looks good at " + time);
+					return true;
+				
+				}
+			}
+			
+			function isCookTimeSet(time){
+				
+				if(time == ""){
+				
+					console.log("Cook time cannot be empty");
+					return false;
+				
+				}
+				else if(isNaN(time)){
+					
+					console.log("This isn't a number");
+					return false;
+				
+				}
+				else{
+					
+					console.log("Cook time looks good at " + time);
+					return true;
+				
+				}
+				
+			
+			}
+			
+			//isDirectionSet?
+			//TODO:: check for special characters
+			function areDirectionsSet(directions){
+				
+				if(directions == ""){
+					console.log("Directions cannot be empty");
+					return false;
+				}
+				else{
+					console.log("Directions look good!");
+					return true;
+				}
+				
+			}
+			
+			function addIngredient(){
+				
+				
+				
+				
+				var ingredientWrapper = document.getElementById("ingredients-wrapper"); //Home for divs
+				var ingredientDivRow = document.createElement("div"); //Divs that we're appending
+				
+				//Stuff we want within the row 
+				var ingredientCount = document.createElement("label");
+				var ingredientQty = document.createElement("input");
+				var ingredientUnit = document.createElement("select");
+				var ingredientName = document.createElement("input");
+				var delIngredient = document.createElement("button");
+				//Styling purposes
+				ingredientDivRow.className = "ingredientRow";
+				ingredientCount.id = ingredientCounter;
+				
+				//End styling
+				
+				ingredientQty.type = "text";
+				ingredientUnit.type = "select";
+				ingredientName.type = "text";
+				
+				ingredientQty.name = "ingredient-qty[]";
+				ingredientUnit.name = "ingredient-unit[]";
+				ingredientName.name = "ingredient-name[]";
+				
+				
+				ingredientCount.innerHTML = ingredientCounter;
+				delIngredient.innerHTML = "Delete Ingredient";
+				
+				delIngredient.addEventListener("click", function(){
+				
+					ingredientWrapper.removeChild(ingredientDivRow);
+					ingredientCounter--;
+					
+					
+					
+					
+				});
+				
+				
+				
+				ingredientUnit.options.add(new Option("", ""));
+				ingredientUnit.options.add(new Option("tsp", "tsp"));
+				ingredientUnit.options.add(new Option("tbsp", "tbsp"));
+				ingredientUnit.options.add(new Option("cup", "cup"));
+				ingredientUnit.options.add(new Option("pint", "quart"));
+				ingredientUnit.options.add(new Option("gallon", "gallon"));
+				ingredientUnit.options.add(new Option("ml", "ml"));
+				ingredientUnit.options.add(new Option("l", "l"));
+				ingredientUnit.options.add(new Option("lb", "lb"));
+				ingredientUnit.options.add(new Option("oz", "oz"));
+				ingredientUnit.options.add(new Option("mg", "mg"));
+				ingredientUnit.options.add(new Option("g", "g"));
+				ingredientUnit.options.add(new Option("kg", "kg"));
+				ingredientUnit.options.add(new Option("mm", "mm"));
+				ingredientUnit.options.add(new Option("cm", "cm"));
+				ingredientUnit.options.add(new Option("m", "m"));
+				ingredientUnit.options.add(new Option("in", "in"));
+				ingredientUnit.options.add(new Option("ft", "ft"));
+				ingredientUnit.options.add(new Option("pinch", "pinch"));
+				ingredientUnit.options.add(new Option("bunch", "bunch"));
+				
+				
+				
+				ingredientDivRow.appendChild(ingredientCount);
+				ingredientDivRow.appendChild(ingredientQty);
+				ingredientDivRow.appendChild(ingredientUnit);
+				ingredientDivRow.appendChild(ingredientName);
+				
+				ingredientWrapper.appendChild(ingredientDivRow);
+				ingredientDivRow.appendChild(delIngredient);
+				
+				ingredientCounter++;
+				
+				
+			}
+			
+			
+			//Fix the logic!
+			function areIngredientsSet(rowCount){
+				console.log(rowCount);
+				var ingredientQty = document.getElementsByName("ingredient-qty[]");
+				var ingredientUnits = document.getElementsByName("ingredient-unit[]");
+				var ingredientName = document.getElementsByName("ingredient-name[]");
+				
+				var regex = /([A-Za-z0-9\-\_]+)/;
+				
+				if(rowCount == 0){
+					
+					console.log("No ingredients have been selected");
+					return false;
+				
+				}
+				
+				for(var i = 0; i < rowCount; i++){
+					
+					if(ingredientQty[i].value == "" || isNaN(ingredientQty[i].value)){
+						
+						console.log("Ingredient " + i + " has no qty");
+						return false;
+						
+					}
+					
+					else if(ingredientUnits[i].value == ""){
+						
+						console.log("Ingredient " + i + " must have a unit of measurement");
+						return false;
+					
+					}
+					else if(ingredientName[i].value == "" || !ingredientName[i].value.match(regex)){
+						
+						console.log("Ingredient contains invalid characters");
+						return false;
+					
+					}
+					else{
+						
+						continue;
+					
+					}
+					
+					
+				}
+				
+				console.log("All ingredients look ok!");
+				
+				return true;
+				
+			}
+			
+			function submitFormData(){
+					var name = document.getElementById("recipe-name").value;
+					//
+					//
+					var prepTime = document.getElementById("recipe-prep-time").value;
+					var cookTime = document.getElementById("recipe-cook-time").value;
+					var directions = document.getElementById("recipe-directions").value;
+					var ingName = document.getElementById("ingredient-name").value;
+					$.ajax({
+						type: "POST",
+						url: "php/recipe_upload_validator.php",
+						data: {
+							recipeName : name, 
+							mealTime   : 'recipe-time-of-day', 
+							prepTime   :  prepTime, 
+							cookTime   :  cookTime, 
+							cookingDirections : directions,
+							ingredient : ingName,
+							ingredientUnit : 'ingredient-unit',
+							ingredientQty : 'ingredient-qty'
+						},
+						success: function(data){
+							console.log(data);
+							
+							//callback
+						}
+					});
+					
+				
+				
+				
+			}
+			
+			
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<style>
+			#ingredients-wrapper{
+				width:1024px;
+				height:300px;
+				//height:auto;
+				border:1px solid black;
+				overflow:auto;
+			}
+			
+			.ingredientRow{
+				width:1024px;
+				height:50px;
+				background-color:#F5F5F5;
+				display:block;
+				margin-bottom:2px;
+				line-height:50px;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+	
+		<form action="" method="POST" name= "recipe-form">
+			
+			<label>Recipe Name</label>
+			<input type="text" name="recipe-name" id="recipe-name">
+		
+			</br>
+			</br>
+			
+			<label>Times to Eat</label>
+			<input type="checkbox" name="recipe-time-of-day[]" value="breakfast">breakfast
+			<input type="checkbox" name="recipe-time-of-day[]" value="lunch">lunch
+			<input type="checkbox" name="recipe-time-of-day[]" value="dinner">dinner
+			
+			</br>
+			</br>
+			
+			<label>Preperation Time</label>
+			<input type="text" name="recipe-prep-time" id="recipe-prep-time">
+			
+			</br>
+			</br>
+			
+			<label>Cook Time</label>
+			<input type="text" name="recipe-cook-time" id="recipe-cook-time">
+			
+			</br>
+			</br>
+			
+			<label>Directions</label>
+			<textarea name = "recipe-directions" id= "recipe-directions"></textarea>
+			
+			
+		</form>
+		
+		</br>
+			</br>
+			
+			<label>Ingredients qty/unit/name</label>
+			
+			<div id="ingredients-wrapper">
+				
+			</div>
+			
+			</br>
+			</br>
+		<button name="add-ingredient-button" id="add-ingredient-button" onclick="addIngredient()">Add Ingredient</button>
+		<button name ="submit-recipe-button" id="submit-recipe-button" onclick="main()">Submit</button>
+	</body>
+</html>
