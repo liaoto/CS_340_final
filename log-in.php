@@ -17,7 +17,7 @@ $uname = $_POST['uname']; // retrieving username
 $upassword = $_POST['upassword'];   // retrieving password
 
 // Make the query to get the password of the user
-$sql = "Select password_hash FROM Users where username = '$uname'";
+$sql = "Select Password_hash FROM Users where Username = '$uname'";
     
 $result = @mysqli_query($dbc, $sql);
 $dbpass = "";
@@ -26,9 +26,9 @@ $dbpass = "";
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        $dbpass = $row["password_hash"];
+        $dbpass = $row["Password_hash"];
     }
-    $res = mysqli_query($dbc,"select * from Users where username='$uname'");
+    $res = mysqli_query($dbc,"select * from users where Username='$uname'");
     $result=mysqli_fetch_array($res);
     if(password_verify($upassword, $dbpass)){
         if($result) {
