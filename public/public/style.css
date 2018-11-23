@@ -1,0 +1,196 @@
+body {
+  font-family: 'Questrial', sans-serif;
+  margin: 0;
+  background-color: #7799bb;
+  overflow-y: scroll;
+  height: auto;
+  font-weight: 100;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+h1{
+	font-weight:100;
+	display:block;
+				
+}
+
+a {
+  text-decoration: none;
+}
+
+.site-title {
+  margin: 0;
+  padding: 20px 20px;
+  font-size: 30px;
+  font-weight: 100;
+  background-color: gray;
+  color: #fff;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.navbar {
+  background-color: #00008b;
+  font-size: 18px;
+  width: 180px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 80px;
+  z-index = -1;
+  
+}
+
+.navlist {
+  margin: 0px 0px 0px 5px;
+  padding: 0px 0 0px 0;
+}
+
+.navitem {
+  display: inline-block;
+  padding: 10px 0 10px 0;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: white;
+  width: 160px;
+  
+}
+
+.container {
+	position: relative;
+	padding: 10px;
+	margin: 10px;
+	width: 100%;
+	height: 600px;
+	left: 200px;
+	background-color: white;
+	border-radius: 25px;
+}
+
+.size-container {
+	position: relative;
+	padding: 10px 10px 10px 10px;
+	margin: 10px;
+	width: 100%;
+	height: auto;
+	left: 200px;
+	background-color: white;
+	border-radius: 25px;
+}
+
+
+.add-container {
+	position: relative;
+	left: 20px;
+	padding: 20px;
+}
+
+.title {
+	color: black;
+	padding: 20px;
+}
+
+.input {
+	margin-bottom: 20px;
+}
+
+#instruction {
+	height: 200px;
+	width: 500px;
+}
+
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: float;
+	
+}
+
+.btn:hover {background: #eee;}
+
+
+.cake-photo-img {
+padding: 20px;
+}
+
+.burger-photo-img {
+padding: 20px;
+}
+
+.potato-photo-img {
+	padding: 20px;
+}
+
+.food-image {
+	border-style: solid;
+	border: 10px;
+	padding: 20px;
+}
+
+a {
+  color: white;
+}
+
+a:hover,
+a:focus {
+  color: #319df6;
+}
+
+a:focus {
+  outline: none;
+}
+
+.navlink a {
+  padding: 8px 10px;
+  display: inline-block;
+}
+
+.img-container {
+	width: 100%;
+	height: 100%;
+	background-size: 100%;
+
+}
+
+.delete-container{
+	padding: 20px;
+	position: relative;
+	left: 20px;
+}
+
+.search-container{
+	padding: 20px;
+	position: relative;
+	left: 20px;
+}
+
+.register-container {
+	padding: 20px 50px 20px 150px;
+}
+
+.login-container {
+	padding: 20px 220px 20px 50px;
+	border-right: 1px solid;
+	float: left;
+	margin-left: 10px;
+	margin-right: 100px;
+}
+
+.hidden {
+  display: none;
+}
+
+.about-us-box {
+	border-style: solid;
+	border-width: 1px;
+	padding: 20px 20px 20px 20px;
+	border-color: #7799bb;
+	border-radius: 25px;
+}
