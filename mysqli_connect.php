@@ -9,13 +9,13 @@
 define('DB_USER', 'username');
 define('DB_PASSWORD', 'password');
 define('DB_HOST','host');
-define('DB_NAME','database_name');
+define('DB_NAME','db_name');
 
 // Make the connection:
 
 $dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die('Could not connect to MySQL: ' .mysqli_connect_error());
 
 // Set the encoding...
-mysqli_set_charset('$dbc','utf8');
+mysqli_set_charset($dbc,'utf8');
 
 ?>
