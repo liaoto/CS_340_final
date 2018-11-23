@@ -39,10 +39,15 @@ CREATE TABLE IF NOT EXISTS `cookingapplication`.`users` (
   `User_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NOT NULL,
   `Password_hash` VARCHAR(255) NOT NULL,
+  `firstName` VARCHAR(45) NOT NULL,
+  `lastName` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `age` INT NULL,
   PRIMARY KEY (`User_id`),
   UNIQUE INDEX `User_id_UNIQUE` (`User_id` ASC) VISIBLE,
   UNIQUE INDEX `Username_UNIQUE` (`Username` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
