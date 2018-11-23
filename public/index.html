@@ -71,13 +71,13 @@
 			
 			#left-side{
 				width:800px;
-				margin-right:0px;
 				background-color:white;
-				float: left;
-				padding: 20px 5px 0px 0px;
+				position: relative;
+				padding: 20px 0px 0px 0px;
+				left: 420px;
 			}
 			
-			
+			<!--
 			#right-side{
 				display: inline-block;
 				width:430px;
@@ -87,7 +87,7 @@
 				padding: 20px 0px 0px 0px;
 				
 			}
-		 
+			-->
 	
 			input[name=search-recipes]{
 				border:1px solid #0FA4FF;
@@ -139,8 +139,7 @@
 				height:350px;
 
 				display:inline-block;
-				margin-left:5px;
-				margin-right:5px;
+				margin-left:10px;
 				margin-top:5px;
 				margin-bottom:5px;
 				text-align:center;
@@ -158,9 +157,6 @@
 				font-size:18px;
 				font-weight:400;
 				
-			
-				
-				
 			}
 			
 			
@@ -177,12 +173,13 @@
           <li class="navitem navlink"><a href="recipe.html">Recipe</a></li>
           <li class="navitem navlink"><a href="create.html">Add a Recipe</a></li>
 		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete or Update a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Sign-up-register.html">Login or Register Now</a></li>
 		  <li class="navitem navlink"><a href="About.html">About</a></li>
         </ul>
     </nav>	
 	
-	<div id="container" class="container">
+
 		
 		
 		<!-- 
@@ -259,14 +256,24 @@
 				<label>Chicken Tacos</label>
 			</div>
 			
+			<div class="beautiful-box-wrapper">
+				<img src="img/11.jpg">
+				<label>Pepperoni Pizza</label>
+			</div>
+			
+			<div class="beautiful-box-wrapper">
+				<img src="img/12.jpg">
+				<label>French Fries</label>
+			</div>
+			
 			
 		
 		
-		</div>
 		
 		
+		<!--
 		
-		<div id="right-side">
+		<div id="right-side" class="container">
 		 
 			<span>Search Recipe Library</span>
 			
@@ -341,7 +348,7 @@
 			
 		</div>
 		
-		
+		-->
 	
 	</div>
 	
