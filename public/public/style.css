@@ -171,6 +171,18 @@ a:focus {
 	left: 20px;
 }
 
+.register-container {
+	padding: 20px 50px 20px 150px;
+}
+
+.login-container {
+	padding: 20px 220px 20px 50px;
+	border-right: 1px solid;
+	float: left;
+	margin-left: 10px;
+	margin-right: 100px;
+}
+
 .hidden {
   display: none;
 }
