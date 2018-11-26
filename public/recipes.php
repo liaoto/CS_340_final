@@ -3,15 +3,15 @@
 	
 	function queryRecipeRowData(){
 	
-	require "mysqli_connect.php";	
+	require "php/connect.php";	
 	$query = "SELECT * FROM recipes ORDER BY recipe_name";
 	$result = mysqli_query($conn, $query);
 	
 	
 	while($row = mysqli_fetch_assoc($result)){
 		
-		$row_id = $row["RecipeID"];
-		$recipe_name = $row["RecipeName"];
+		$row_id = $row["recipe_id"];
+		$recipe_name = $row["recipe_name"];
 		$recipe_dir = $row["recipe_directory"];
 		
 		echo "<div class = 'rowData' id=".$row_id.">". 
