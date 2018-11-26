@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
     if(password_verify($upassword, $dbpass)){
         if($result) {
             $content = "Authenticated";
-            echo '<a href="#"><h1 class="site-title">Login Sucess</h1></a>';
+            echo '<a href="#"><h1 class="site-title">Login Sucess</h1></a>';       
             }
         } else {
     $content = "failed to authenticate";
@@ -224,16 +224,16 @@ if ($result->num_rows > 0) {
 	<nav class="navbar">
         <ul class="navlist">
           <li class="navitem navlink active"><a href="index.html">Home</a></li>
-          <li class="navitem navlink"><a href="recipe.html">Recipe</a></li>
+          <li class="navitem navlink"><a href="recipe.php">Recipe</a></li>
           <li class="navitem navlink"><a href="log-in.php">Login</a></li>
           <li class="navitem navlink"><a href="Sign-up.php">Register now</a></li>
           <li class="navitem navlink"><a href="create.php">Add a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete Recipe</a></li>
-          <li class="navitem navlink"><a href="Delete_recipe.html">Update Recipe</a></li>
+		  <li class="navitem navlink"><a href="Search_recipe.php">Search a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Delete_recipe.php">Delete Recipe</a></li>
+          <li class="navitem navlink"><a href="Update_recipe.php">Update Recipe</a></li>
 		  <li class="navitem navlink"><a href="About.html">About</a></li>
         </ul>
-    </nav>	
+    </nav>		
     
     
     <body>	

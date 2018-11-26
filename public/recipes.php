@@ -1,11 +1,12 @@
 <?php
-	
+session_start();
+	$var_value = $_SESSION['uname'];
 	
 	function queryRecipeRowData(){
 	
 	require "mysqli_connect.php";	
-	$query = "SELECT * FROM recipes ORDER BY recipe_name";
-	$result = mysqli_query($conn, $query);
+	$query = "SELECT * FROM recipe ORDER BY recipe_name";
+	$result = mysqli_query($dbc, $query);
 	
 	
 	while($row = mysqli_fetch_assoc($result)){

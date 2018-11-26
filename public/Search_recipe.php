@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <title>Recipe Database</title>
 
-    <!-- This is a stylesheet that includes the font you should use -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
 
     <!-- This is a 3rd-party stylesheet for Font Awesome: http://fontawesome.io/ -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen">
@@ -36,10 +35,16 @@
     </nav>		
 	
 	
+	
     </header>
 	
 	<div class="container">
-       
+       <h1 class="title"> Search a Recipe</h1>
+	   <div class="search-container">
+			<form> Enter a Recipe_name*<br> <input type="text" name="Recipe Name" class="input" <br> </form>
+			<button class="Submit">Submit</button>
+
+	   </div>
     </div>
 
 	
