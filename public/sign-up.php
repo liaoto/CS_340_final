@@ -3,15 +3,12 @@
 
 $page_title = 'Register';
 
-
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     require('mysqli_connect.php'); // Connect DB
-
 	$errors = []; // Initialize an error array.
-    
-    
+       
     // Check for a username
 	if (empty($_POST['username'])) {
 		$errors[] = 'You forgot to enter your username.';
@@ -85,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$q = "INSERT INTO users (Username, firstName, lastName, email, Password_hash, age) VALUES ('$usernameinput', '$firstnameinput', '$lastnameinput', '$emailinput', '$finalpass2', '$ageinput' )"; 
 		$r = @mysqli_query($dbc, $q); // Run the query.
 		if ($r) { // If it ran OK.
-
             
             $File = "db-password.txt";
             $Handle = fopen($File, 'a');
@@ -93,20 +89,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $Data = $finalpass2;
             fwrite($Handle, $Data);
             fclose($Handle);
-            
-            
+                        
 			// Print a message:
-			echo $usernameinput . ' is now registered.' ;
+           echo '<div class="container"><div class="register-container"><p style="color:Black;>Login success</p><p2 style="color:black; class="error">You are registered. congratulations.</p2></div></div>';
             
+            echo '<button><a href="index.html">Go to Home</a></button>';
 
 		} else { // If it did not run OK.
 
 			// Public message:
-			echo '<h1 style="color:red;>System Error</h1>
-			<p style="color:red; class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>';
-
-			// Debugging message:
-			echo '<p>' . mysqli_error($dbc) . '<br><br>Query: ' . $q . '</p>';
+			echo '<div class="container"><div class="register-container"><p style="color:red;>System Error</p>
+			<p2 style="color:red; class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p2></div></div>';
 
 		} // End of if ($r) IF.
 
@@ -115,12 +108,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	} else { // Report the errors.
 
-		echo '<h1 style="color:red;>Error!</h1>
+		echo '<a href="#"><h1 class="site-title" >Error!
 		<p style="color:red; class="error">The following error(s) occurred:<br>';
 		foreach ($errors as $msg) { // Print each error.
 			echo " - $msg<br>\n";
 		}
-		echo '</p><p>Please try again.</p><p><br></p>';
+		echo '</p><p>Please try again.</p><p><br></p></h1></a>';
 
 	} // End of if (empty($errors)) IF.
 
@@ -156,14 +149,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <ul class="navlist">
           <li class="navitem navlink active"><a href="index.html">Home</a></li>
           <li class="navitem navlink"><a href="recipe.html">Recipe</a></li>
-          <li class="navitem navlink"><a href="create.html">Add a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete or Update a Recipe</a></li>
-		  <li class="navitem navlink"><a href="log-in.php">Login</a></li>
+          <li class="navitem navlink"><a href="log-in.php">Login</a></li>
           <li class="navitem navlink"><a href="Sign-up.php">Register now</a></li>
+          <li class="navitem navlink"><a href="create.php">Add a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete Recipe</a></li>
+          <li class="navitem navlink"><a href="Delete_recipe.html">Update Recipe</a></li>
 		  <li class="navitem navlink"><a href="About.html">About</a></li>
         </ul>
     </nav>	
+	
 		
 	
     </header>

@@ -17,7 +17,7 @@ $uname = $_POST['uname']; // retrieving username
 $upassword = $_POST['upassword'];   // retrieving password
 
 // Make the query to get the password of the user
-$sql = "Select Password_hash FROM Users where Username = '$uname'";
+$sql = "Select Password_hash FROM users where Username = '$uname'";
     
 $result = @mysqli_query($dbc, $sql);
 $dbpass = "";
@@ -33,20 +33,18 @@ if ($result->num_rows > 0) {
     if(password_verify($upassword, $dbpass)){
         if($result) {
             $content = "Authenticated";
-            print_r(htmlspecialchars($content)); // print/update value            
-            echo '</br><a href="list-users.php">List user</a> ';
-            header('Location: sign-up.php');
-
+            echo '<a href="#"><h1 class="site-title">Login Sucess</h1></a>';
             }
         } else {
     $content = "failed to authenticate";
-    print_r(htmlspecialchars($content));// print/update value
+            echo '<a href="#"><h1 class="site-title">Login Failed</h1></a>';// print/update value
     mysqli_close($dbc); // Close the database 
     }
 }
     else {
     $content = "failed to authenticate";
-    print_r(htmlspecialchars($content));// print/update 
+   echo '<a href="#"><h1 class="site-title">Failed Sucess</h1></a>';// print/update 
+
     }
 
     
@@ -227,15 +225,15 @@ if ($result->num_rows > 0) {
         <ul class="navlist">
           <li class="navitem navlink active"><a href="index.html">Home</a></li>
           <li class="navitem navlink"><a href="recipe.html">Recipe</a></li>
-          <li class="navitem navlink"><a href="create.html">Add a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete or Update a Recipe</a></li>
-		  <li class="navitem navlink"><a href="log-in.php">Login</a></li>
+          <li class="navitem navlink"><a href="log-in.php">Login</a></li>
           <li class="navitem navlink"><a href="Sign-up.php">Register now</a></li>
+          <li class="navitem navlink"><a href="create.php">Add a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete Recipe</a></li>
+          <li class="navitem navlink"><a href="Delete_recipe.html">Update Recipe</a></li>
 		  <li class="navitem navlink"><a href="About.html">About</a></li>
         </ul>
     </nav>	
-	
     
     
     <body>	
