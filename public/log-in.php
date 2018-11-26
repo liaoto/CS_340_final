@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
 }
     else {
     $content = "failed to authenticate";
-   echo '<a href="#"><h1 class="site-title">Failed Sucess</h1></a>';// print/update 
+   echo '<a href="#"><h1 class="site-title">Failed to Login</h1></a>';// print/update 
 
     }
 
