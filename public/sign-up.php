@@ -145,19 +145,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
       <a href="#"><h1 class="site-title"> The Recipe Database</h1></a>
 
-     <nav class="navbar">
+    <nav class="navbar">
         <ul class="navlist">
           <li class="navitem navlink active"><a href="index.html">Home</a></li>
-          <li class="navitem navlink"><a href="recipe.html">Recipe</a></li>
+          <li class="navitem navlink"><a href="recipe.php">Recipe</a></li>
           <li class="navitem navlink"><a href="log-in.php">Login</a></li>
           <li class="navitem navlink"><a href="Sign-up.php">Register now</a></li>
           <li class="navitem navlink"><a href="create.php">Add a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Search_recipe.html">Search a Recipe</a></li>
-		  <li class="navitem navlink"><a href="Delete_recipe.html">Delete Recipe</a></li>
-          <li class="navitem navlink"><a href="Delete_recipe.html">Update Recipe</a></li>
+		  <li class="navitem navlink"><a href="Search_recipe.php">Search a Recipe</a></li>
+		  <li class="navitem navlink"><a href="Delete_recipe.php">Delete Recipe</a></li>
+          <li class="navitem navlink"><a href="Update_recipe.php">Update Recipe</a></li>
 		  <li class="navitem navlink"><a href="About.html">About</a></li>
         </ul>
-    </nav>	
+    </nav>		
 	
 		
 	
