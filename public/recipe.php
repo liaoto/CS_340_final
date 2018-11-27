@@ -1,11 +1,9 @@
-<?php # Script 9.5 - sign-up.php #2
-// This script performs an INSERT query to add a record to the users table.
+<?php # Script 9.5 - recipe.php #2
+// This script performs an Select query to display recipe to our users.
 
-$page_title = 'Register';
+$page_title = 'Display recipe';
 
-// Check for form submission:
-
-     
+ 
 require('mysqli_connect.php'); // Connect DB
 
 
@@ -15,15 +13,16 @@ $result = $dbc->query($sql);
 echo '<a href="#"><h1 class="site-title"> The Recipe Database</h1></a>
 <div class="container">';
 
+// Output of table header
 if ($result->num_rows > 0) {
-    echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>Recipe Name</th><th style = 'border: 1px solid black;'>Recipe Description</th><th style = 'border: 1px solid black;'>Preperation Time</th><th style = 'border: 1px solid black;'>Cook Time</th><th style = 'border: 1px solid black;'>Tag</th></tr>";
+    echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>Recipe ID</th><th style = 'border: 1px solid black;'>Recipe Name</th><th style = 'border: 1px solid black;'>Recipe Description</th><th style = 'border: 1px solid black;'>Preperation Time</th><th style = 'border: 1px solid black;'>Cook Time</th><th style = 'border: 1px solid black;'>Tag</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td style = 'border: 1px solid black;'>".$row["RecipeName"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeDescription"]."</td><td style = 'border: 1px solid black; width: 7%'>".$row["Prep_time"]."</td><td style = 'border: 1px solid black;'>".$row["Cook_time"]."</td><td style = 'border: 1px solid black;width: 7%'>".$row["Tag_title"]."</td></tr>";
+        echo "<tr><td style = 'border: 1px solid black;'>".$row["RecipeID"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeName"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeDescription"]."</td><td style = 'border: 1px solid black; width: 7%'>".$row["Prep_time"]."</td><td style = 'border: 1px solid black;'>".$row["Cook_time"]."</td><td style = 'border: 1px solid black;width: 7%'>".$row["Tag_title"]."</td></tr>";
     }
     echo "</table></div>";
 } else {
-    echo "0 results";
+    echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>0 results</th></tr></table></div>";
 }
 
 mysqli_close($dbc); // Close the database connection.
