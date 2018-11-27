@@ -42,12 +42,12 @@ CREATE TABLE IF NOT EXISTS `cookingapplication`.`users` (
   `firstName` VARCHAR(45) NOT NULL,
   `lastName` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `age` INT NULL,
+  `age` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`User_id`),
   UNIQUE INDEX `User_id_UNIQUE` (`User_id` ASC) VISIBLE,
   UNIQUE INDEX `Username_UNIQUE` (`Username` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 23
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `cookingapplication`.`recipe` (
   `RecipeID` INT(11) NOT NULL AUTO_INCREMENT,
   `RecipeName` VARCHAR(100) NOT NULL,
   `RecipeDescription` VARCHAR(100) NULL DEFAULT NULL,
-  `Prep_time` INT(4) NOT NULL,
-  `Cook_time` YEAR(4) NOT NULL,
+  `Prep_time` FLOAT(4,2) NOT NULL,
+  `Cook_time` FLOAT(4,2) NOT NULL,
   `User_id` INT(10) UNSIGNED NOT NULL,
   `Tag_title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`RecipeID`),
@@ -68,8 +68,11 @@ CREATE TABLE IF NOT EXISTS `cookingapplication`.`recipe` (
   INDEX `fk_recipe_Users1_idx` (`User_id` ASC) VISIBLE,
   CONSTRAINT `fk_recipe_Users1`
     FOREIGN KEY (`User_id`)
-    REFERENCES `cookingapplication`.`users` (`User_id`))
+    REFERENCES `cookingapplication`.`users` (`User_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -87,7 +90,9 @@ CREATE TABLE IF NOT EXISTS `cookingapplication`.`recipe_instruction` (
   INDEX `RecipeID` (`RecipeID` ASC) VISIBLE,
   CONSTRAINT `recipe_instruction_ibfk_1`
     FOREIGN KEY (`RecipeID`)
-    REFERENCES `cookingapplication`.`recipe` (`RecipeID`))
+    REFERENCES `cookingapplication`.`recipe` (`RecipeID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -106,10 +111,14 @@ CREATE TABLE IF NOT EXISTS `cookingapplication`.`recipeingredient` (
   INDEX `Ingredient_ID` (`Ingredient_ID` ASC) VISIBLE,
   CONSTRAINT `recipeingredient_ibfk_1`
     FOREIGN KEY (`RecipeID`)
-    REFERENCES `cookingapplication`.`recipe` (`RecipeID`),
+    REFERENCES `cookingapplication`.`recipe` (`RecipeID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `recipeingredient_ibfk_2`
     FOREIGN KEY (`Ingredient_ID`)
-    REFERENCES `cookingapplication`.`ingredient` (`Ingredient_ID`))
+    REFERENCES `cookingapplication`.`ingredient` (`Ingredient_ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
