@@ -1,3 +1,44 @@
+<?php # Script 9.5 - recipe.php #2
+// This script performs an Select query to display recipe to our users.
+
+$page_title = 'Search';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+ require('mysqli_connect.php'); // Connect DB
+    
+
+   
+    if (empty($_POST['search'])) {
+		 echo '<a href="#"><h1 class="site-title">The search input is empty.</h1></a>';// print/update value
+        
+    } else {
+		$searchinput = mysqli_real_escape_string($dbc, trim($_POST['search']));
+        $sql = "SELECT * FROM recipe WHERE RecipeName = '$searchinput'";
+        $result = $dbc->query($sql);
+        echo '<a href="#"><h1 class="site-title">Search Result</h1></a><div class="container">';
+        // Output of table header
+        if ($result->num_rows > 0) { 
+            echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>Recipe ID</th><th style = 'border: 1px solid black;'>Recipe Name</th><th style = 'border: 1px solid black;'>Recipe Description</th><th style = 'border: 1px solid black;'>Preperation Time</th><th style = 'border: 1px solid black;'>Cook Time</th><th style = 'border: 1px solid black;'>Tag</th></tr>"; 
+            // output data of each row
+            while($row = $result->fetch_assoc()) {    
+                echo "<tr><td style = 'border: 1px solid black;'>".$row["RecipeID"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeName"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeDescription"]."</td><td style = 'border: 1px solid black; width: 7%'>".$row["Prep_time"]."</td><td style = 'border: 1px solid black;'>".$row["Cook_time"]."</td><td style = 'border: 1px solid black;width: 7%'>".$row["Tag_title"]."</td></tr>";
+            }
+            echo "</table></div>";
+        } else {
+            echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>0 results</th></tr></table></div>";
+        }
+
+   
+
+}
+
+    }
+else{
+    
+}
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -41,8 +82,11 @@
 	<div class="container">
        <h1 class="title"> Search a Recipe</h1>
 	   <div class="search-container">
-			<form> Enter a Recipe_name*<br> <input type="text" name="Recipe Name" class="input" <br> </form>
-			<button class="Submit">Submit</button>
+			<form action="Search_recipe.php" method="post"> 
+                <p>Enter a Recipe_name*<br> <input type="text" name="search"</p> <br> 
+                <p><input type="submit" name="submit" value="Submit"></p>
+               </form>
+           </form>
 
 	   </div>
     </div>
