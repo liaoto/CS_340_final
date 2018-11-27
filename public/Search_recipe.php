@@ -1,13 +1,9 @@
 <?php # Script 9.5 - recipe.php #2
 // This script performs an Select query to display recipe to our users.
-
 $page_title = 'Search';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
  require('mysqli_connect.php'); // Connect DB
     
-
    
     if (empty($_POST['search'])) {
 		 echo '<a href="#"><h1 class="site-title">The search input is empty.</h1></a>';// print/update value
@@ -24,16 +20,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             while($row = $result->fetch_assoc()) {    
                 echo "<tr><td style = 'border: 1px solid black;'>".$row["RecipeID"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeName"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeDescription"]."</td><td style = 'border: 1px solid black; width: 7%'>".$row["Prep_time"]."</td><td style = 'border: 1px solid black;'>".$row["Cook_time"]."</td><td style = 'border: 1px solid black;width: 7%'>".$row["Tag_title"]."</td></tr>";
             }
-            echo "</table></div>";
+            
+            echo '</table><br><br><br>';
+            
         } else {
             echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>0 results</th></tr></table></div>";
-        }
-
+        }    
+        echo "<br>";;
+        // Output the instruction using JOIN statement 
+       
+        $sql2 = "SELECT recipe.RecipeName, recipe.Prep_time, recipe.Tag_title, recipe_instruction.Step_Number, recipe_instruction.Instruction_Description FROM recipe JOIN recipe_instruction ON recipe.RecipeID = recipe_instruction.RecipeID WHERE recipe.RecipeName = '$searchinput';";
+        $result2 = $dbc->query($sql2);
    
-
-}
-
+        // Output of table header
+        if ($result2->num_rows > 0) { 
+            echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>Recipe Name</th><th style = 'border: 1px solid black;'>Preperation Time</th><th style = 'border: 1px solid black;'>Tag</th><th style = 'border: 1px solid black;'>Step Numbers</th><th style = 'border: 1px solid black;'>Instruction_Description</th></tr>"; 
+            // output data of each row
+            while($row = $result2->fetch_assoc()) {    
+                echo "<tr><td style = 'border: 1px solid black;'>".$row["RecipeName"]."</td><td style = 'border: 1px solid black;'>".$row["Prep_time"]."</td><td style = 'border: 1px solid black;'>".$row["Tag_title"]."</td><td style = 'border: 1px solid black; width: 7%'>".$row["Step_Number"]."</td><td style = 'border: 1px solid black;'>".$row["Instruction_Description"]."</td></tr>";
+            }
+            echo "</table></div>";           
+            
+        } else {
+            echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>0 results</th></tr></table></div>";
+        }    
+        
+        
     }
+}
 else{
     
 }
