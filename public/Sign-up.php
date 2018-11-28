@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$usernameinput = mysqli_real_escape_string($dbc, trim($_POST['username']));
 	}
     
-    $sql = "Select username FROM Users where username = '$usernameinput'";// get username in database
+    $sql = "Select Username FROM users where Username = '$usernameinput'";// get username in database
         
     $result = $dbc->query($sql);
     
