@@ -1,17 +1,39 @@
 <?php # Script 9.5 - sign-up.php #2
 // This script performs an INSERT query to add a record to the users table.
-
+session_start();
+require_once("scripts/php/connect.php");
+if(!isset($_SESSION['uid'])){
+    header("Location: index.html");
+}
 $page_title = 'Register';
 
+
+/*
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
+    echo "test";
     require('mysqli_connect.php'); // Connect DB
 	$errors = []; // Initialize an error array.
+    
     
 }else{
     
 }
+*/
+
+if(isset($_POST["submit"])){
+    $uid = $_SESSION['uid'];
+    $recipeId= $_POST["recipeId"];
+    $SQL = "DELETE FROM recipe WHERE RecipeID = '$recipeId'";
+    if(mysqli_query($conn, $SQL)){
+        echo "Deleted Recipe";
+    }
+    else{
+        echo "PROBLEM";
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -34,15 +56,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <header>
       <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
-      <a href="#"><h1 class="site-title"> The Recipe Database</h1></a>
-
-     <nav class="navbar">
+     
+ 	<a href="#"><h1 class="site-title"> The Recipe Database</h1></a>
+	 
+	<nav class="navbar">
         <ul class="navlist">
           <li class="navitem navlink active"><a href="index.html">Home</a></li>
           <li class="navitem navlink"><a href="recipe.php">Recipe</a></li>
           <li class="navitem navlink"><a href="log-in.php">Login</a></li>
           <li class="navitem navlink"><a href="Sign-up.php">Register now</a></li>
-          <li class="navitem navlink"><a href="create.php">Add a Recipe</a></li>
+          <li class="navitem navlink"><a href="createrecipe.php">Add a Recipe</a></li>
 		  <li class="navitem navlink"><a href="Search_recipe.php">Search a Recipe</a></li>
 		  <li class="navitem navlink"><a href="Delete_recipe.php">Delete Recipe</a></li>
           <li class="navitem navlink"><a href="Update_recipe.php">Update Recipe</a></li>
@@ -54,11 +77,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </header>
 	
 	<div class="container">
-       <h1 class="title"> Delete or Update a Recipe</h1>
+       <h1 class="title"> Delete Recipe</h1>
 	   <div class="delete-container">
-			<form> Recipe name*<br> <input type="text" name="Recipe Name" class="input" <br> </form>
-			<form> Recipe ID*<br> <input type="text" name="Recipe ID" class="input" <br> </form>
-			<button class="Submit">Submit</button>
+			<form action="<?php echo $_SERVER['PHP_SELF'] ?>"  method="post"> Recipe ID*<br> 
+                <input type="text" name="recipeId" id="recipeId" class="input"> <br>
+			<button class="Submit" name="submit" id="Submit">Submit</button>
+           </form>
 	   </div>
     </div>
 

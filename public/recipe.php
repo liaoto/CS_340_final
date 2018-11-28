@@ -15,10 +15,10 @@ echo '<a href="#"><h1 class="site-title"> The Recipe Database</h1></a>
 
 // Output of table header
 if ($result->num_rows > 0) {
-    echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>Recipe ID</th><th style = 'border: 1px solid black;'>Recipe Name</th><th style = 'border: 1px solid black;'>Recipe Description</th><th style = 'border: 1px solid black;'>Preperation Time</th><th style = 'border: 1px solid black;'>Cook Time</th><th style = 'border: 1px solid black;'>Tag</th></tr>";
+    echo "<table style = 'border: 1px solid black; width: 80%;'><tr><th style = 'border: 1px solid black;'>Recipe ID</th><th style = 'border: 1px solid black;'>Recipe Name</th><th style = 'border: 1px solid black;'>Recipe Description</th><th style = 'border: 1px solid black;'>Preperation Time</th><th style = 'border: 1px solid black;'>Cook Time</th></tr>";
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td style = 'border: 1px solid black;'>".$row["RecipeID"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeName"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeDescription"]."</td><td style = 'border: 1px solid black; width: 7%'>".$row["Prep_time"]."</td><td style = 'border: 1px solid black;'>".$row["Cook_time"]."</td><td style = 'border: 1px solid black;width: 7%'>".$row["Tag_title"]."</td></tr>";
+        echo "<tr><td style = 'border: 1px solid black;'>".$row["RecipeID"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeName"]."</td><td style = 'border: 1px solid black;'>".$row["RecipeDescription"]."</td><td style = 'border: 1px solid black; width: 7%'>".$row["Prep_time"]."</td><td style = 'border: 1px solid black;'>".$row["Cook_time"]."</td></tr>";
     }
     echo "</table></div>";
 } else {

@@ -6,10 +6,10 @@
 
 // Please change the credential according to yours
 
-define('DB_USER', 'root');
+define('DB_USER', 'cs340_limche');
 define('DB_PASSWORD', 'qinger123');
-define('DB_HOST','127.0.0.1:3306');
-define('DB_NAME','cookingapplication');
+define('DB_HOST','classmysql.engr.oregonstate.edu:3306');
+define('DB_NAME','cs340_limche');
 
 // Make the connection:
 
