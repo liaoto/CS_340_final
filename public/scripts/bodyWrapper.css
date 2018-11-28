@@ -1,0 +1,16 @@
+
+		#body-wrapper{
+			width:1366px;
+			min-height:768px;
+			height:auto;
+			margin-left:auto;
+			margin-right:auto;
+			font-family: 'Montserrat', sans-serif;
+		}
+		
+		
+		#inner-body-content{
+			width:inherit;
+			height:auto;
+			
+		}

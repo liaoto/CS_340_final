@@ -1,0 +1,9 @@
+	
+	.recipeRow{
+		
+		width:inherit;
+		height:75px;
+		border:.1px solid gray;
+		line-height:75px;
+		
+	}

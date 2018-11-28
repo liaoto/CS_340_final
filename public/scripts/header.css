@@ -1,0 +1,42 @@
+		
+		
+		/*Header CSS*/
+		#header{
+			width:1366px;
+			height:80px;
+			line-height:80px;
+			font-size:24px;
+			background-color:white;
+			
+			
+		}
+		#header span{
+			margin-left:5px;
+			margin-right:5px;
+			font-family: 'Neucha', cursive;
+			display:inline-block;
+			color:#FFC300;
+		}
+		
+		#header a{
+			color:#808B96;
+			margin-left:5px;
+			margin-right:5px;
+			font-size:16px;
+			font-weight:800;
+			padding-left:1px;
+			padding-right:1px;
+		}
+		
+		#header a:hover{
+			color:white;
+			background-color:#808B96;
+			display:inline-block;
+			
+		}
+		
+		/*End header*/
+		
+		/*Registration CSS Stuff goes below */
+		
+		

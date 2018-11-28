@@ -1,0 +1,46 @@
+			h1.createRecipe{
+				font-weight:100;
+				display:block;
+				
+			}
+			
+			input[id=recipe-upload].createRecipe{
+				width:500px;
+				height:30px;
+				margin-bottom:15px;
+				
+				
+			}
+			
+			label.createRecipe{
+				display:block;
+				
+			}
+			
+			button.createRecipe{
+				width:auto;
+				height:30px;
+				background-color:black;
+				color:white;
+				border:none;
+				display:block;
+			}
+			
+			textarea.createRecipe{
+				width:500px;
+				min-height:200px;
+			
+			}
+			
+			input[name=submit].createRecipe{
+				width:auto;
+				height:30px;
+				background-color:black;
+				color:white;
+				border:none;
+				display:block;
+			}
+			
+			label.createRecipe{
+				display:block;
+			}
