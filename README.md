@@ -1,4 +1,3 @@
-# CS 340 Final Assignment
 
 ## Full Stack Recipe Website
 Description: A website that provides recipes to user. 
