@@ -2,7 +2,7 @@
 ## Full Stack Recipe Website
 Description: A website that provides recipes to user. 
 
-Feature :
+Contribution :
 - User Login Portal (Hashing is used to store password) 
 - Recipe Search function 
 - User favorite function 
